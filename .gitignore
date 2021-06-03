@@ -1,0 +1,14 @@
+# Ignore everything
+#*
+
+# But not these files...
+# samle anything preceeded by "!"  will not be ignored
+# !script.pl
+# !template.latex
+# etc...
+
+# ...even if they are in subdirectories
+#!*/
+
+# if the files to be tracked are in subdirectories
+#!*/home/jayar/.vimrc
