@@ -1,0 +1,50 @@
+
+# Gaps between containers
+gaps inner 4
+gaps outer 2
+
+# Gaps between screen edges and containers
+gaps left 0
+gaps right 0
+gaps top 0
+gaps bottom 0
+#gaps vertical 4
+
+# Create only gaps if more then one container
+smart_gaps on
+
+#new_float none
+default_border pixel 2
+# Hide borders if there is only one child in a workspace or container
+hide_edge_borders --i3 smart_no_gaps
+
+set_from_resource	$background	background
+set_from_resource	$foreground	foreground
+set_from_resource	$color0		color0
+set_from_resource 	$color1 	color1
+set_from_resource 	$color2 	color2
+set_from_resource 	$color3 	color3
+set_from_resource 	$color4 	color4
+set_from_resource 	$color5 	color5
+set_from_resource 	$color6		color6
+set_from_resource	$color7		color7
+set_from_resource	$color8		color8
+set_from_resource	$color9		color9
+set_from_resource	$color10	color10
+set_from_resource	$color11	color11
+set_from_resource	$color12	color12
+set_from_resource	$color13	color13
+set_from_resource	$color14	color14
+set_from_resource	$color15	color15
+
+# Theme colors
+# class                 border  	backgr. 	text    	indic.  	child_border
+# My colors
+client.background	$background
+
+client.focused         	$foreground	$background	$foreground	$color7		$color7
+client.unfocused       	$foreground	$background	$foreground	$background	$background
+client.focused_inactive	$foreground	$background	$foreground	$background	$background
+client.urgent		$foreground	$background	$foreground	$background	$background
+client.placeholder	$foreground	$background	$foreground	$background	$background
+

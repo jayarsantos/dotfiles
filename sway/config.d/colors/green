@@ -1,0 +1,48 @@
+
+# Gaps between containers
+gaps inner 4
+gaps outer 2
+
+# Gaps between screen edges and containers
+gaps left 0
+gaps right 0
+gaps top 0
+gaps bottom 0
+#gaps vertical 4
+
+# Create only gaps if more then one container
+smart_gaps on
+
+#new_float none
+default_border pixel 2
+# Hide borders if there is only one child in a workspace or container
+hide_edge_borders --i3 smart_no_gaps
+
+set $focused_bgcolor #272822
+set $focused_textcolor #f8f8f2
+set $focused_indicator #803232
+
+set $inactive_bgcolor #414339
+set $inactive_textcolor #f8f8f2
+set $inactive_indicator #f83333
+
+set $unfocused_bgcolor #414339
+set $unfocused_textcolor #f8f8f2
+set $unfocused_indicator #f83333
+
+set $urgent_bgcolor #CC7000
+set $urgent_textcolor #f8f8f2
+set $urgent_indicator #f83333
+
+set $menu_bg $inactive_bgcolor
+set $menu_fg $inactive_textcolor
+set $menu_bgactive $focused_bgcolor
+set $menu_fgactive $focused_textcolor
+
+set $statuscolor #ffffff80
+set $statusbg #414339ff
+
+client.focused $focused_bgcolor $focused_bgcolor $focused_textcolor $focused_indicator $focused_bgcolor
+client.focused_inactive $inactive_bgcolor $inactive_bgcolor $inactive_textcolor $inactive_indicator $inactive_bgcolor
+client.unfocused $unfocused_bgcolor $unfocused_bgcolor $unfocused_textcolor $unfocused_indicator $unfocused_bgcolor
+client.urgent $urgent_bgcolor $urgent_bgcolor $urgent_textcolor $urgent_indicator $urgent_bgcolor
