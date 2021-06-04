@@ -1,0 +1,12 @@
+[Unit]
+Description=Wallpaper for sway
+Documentation=man:swayidle(1)
+BindsTo=sway-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'swaymsg output \* bg $(gsettings get org.gnome.desktop.background picture-uri | cut -c 9- | rev | cut -c 2- | rev) fill'
+
+[Install]
+WantedBy=sway-session.target

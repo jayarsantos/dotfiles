@@ -1,0 +1,60 @@
+#!/bin/sh
+#xdg=$(systemctl --user status xdg-desktop-portal-gtk | grep 'Active' | awk '{print $2}')
+
+lock() {
+	#swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+	swaylock -C ~/.config/swaylock/config
+}
+
+reset_kbd() {
+	kbd="$(swaymsg -r -t get_inputs | jq '.[] | select(.name | contains("keyboard")) | .identifier')"
+	swaymsg input "$kbd" xkb_switch_layout 0
+}
+
+before_lock() {
+	#bluetoothctl disconnect
+	playerctl -a pause
+	reset_kbd
+	#systemctl --user stop redshift.service
+	#systemctl --user stop mako.service
+}
+
+after_lock() {
+	#sleep 5
+	#systemctl --user start redshift.service
+	#if [[ $xdg == failed ]] || [[ $xdg == inactive ]]; then
+	#	systemctl --user start xdg-desktop-portal-gtk.service
+	#fi
+
+	#systemctl --user start mako.service
+	#sleep 10
+	#notify-send "redshift and mako has been loaded."
+}
+
+case "$1" in
+	logout)
+		before_lock
+		systemctl --user stop sway.service
+		swaymsg exit
+		;;
+	lock)
+		before_lock
+		lock
+		after_lock
+		;;
+	suspend)
+		before_lock
+		loginctl suspend
+		lock
+		after_lock
+		;;
+	reboot)
+		loginctl reboot
+		;;
+	shutdown)
+		loginctl poweroff
+		;;
+	*)
+		echo "Usage: $0 {lock|suspend|reboot|shutdown}"
+		exit 2
+esac

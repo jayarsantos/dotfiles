@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Generic bemenu script. Will be run from other scripts to make sure, bemenu always looks the same
+
+BEMENU_ARGS=(-n -fn 'Source Code Pro Regular-11' -i -p '' --scrollbar=autohide --tb "#1a1a1a" --tf "#268bd2" --fb "#2E3440" --nb "#1a1a1a" --hb "#1a1a1a" --hf "#268bd2" -m $(swaymsg -r -t get_outputs | jq '. | reverse | to_entries | .[] | select(.value.focused == true) | .key') "$@")
+
+if [ "$1" = 'dmenu' ]; then
+  bemenu-run "${BEMENU_ARGS[@]}"
+else
+  bemenu "${BEMENU_ARGS[@]}"
+fi

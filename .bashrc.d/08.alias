@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+
+# python2 compatibility
+alias python='/usr/bin/python'
+alias python2='/usr/bin/python'
+
+# ls aliases
+alias ll="ls -l --group-directories-first"
+alias ls='ls -hF --color'  # add colors for filetype recognition
+alias la='ls -Al'          # show hidden files
+alias lx='ls -lXB'         # sort by extension
+alias lk='ls -lSr'         # sort by size, biggest last
+alias lc='ls -ltcr'        # sort by and show change time, most recent last
+alias lu='ls -ltur'        # sort by and show access time, most recent last
+alias lt='ls -ltr'         # sort by date, most recent last
+alias lm='ls -al |more'    # pipe through 'more'
+alias lr='ls -lR'          # recursive ls
+alias l='ls -CF'
+alias lsd='ls -l | grep "^d"'   #list only directories
+
+# other commonly used aliases
+alias vim='vimx'
+alias vi='vimx'
+alias md='mkdir'
+alias rd='rm -rf'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias diff='diff -u'      # diff in unified mode is more useful
+alias tgz='tar -czpf'
+alias txz='tar -cJpf'
+alias reload='source ~/.bashrc'
+alias ds1='du -h --max-depth=1 | sort -n -r'
+alias ds0='du -h --max-depth=0 | sort -n -r'
+alias cdS='cd ~/.config/sway/config.d'
+alias cdP='cd ~/MyPython'
+alias cdL='cd ~/MyPython/Development/LoanApp'
+
+# This is a region where non-standard programs are used. We should test before.
+
+# sudo fixes for apt-get (check if we have sudo rights and if apt-get exists)
+#if groups $USER | grep &>/dev/null '\bsudo\b'; then
+#    if [ -e /usr/bin/dnf ]; then
+        alias install='sudo dnf install'
+        alias remove='sudo dnf remove'
+        alias update='sudo dnf update'
+        alias upgrade='sudo dnf upgrade'
+        alias dist-upgrade='sudo dnf dist-upgrade'
+#    fi
+#fi
+
+
+#Jekyll (Ruby gem for static websites; need to figure out a good way to test)
+#alias jekyll='bundle exec jekyll'
