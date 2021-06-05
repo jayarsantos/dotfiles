@@ -1,6 +1,6 @@
 # Ignore everything
 #*
-
+.vim/bundle/vim-sensible
 # But not these files...
 # samle anything preceeded by "!"  will not be ignored
 # !script.pl

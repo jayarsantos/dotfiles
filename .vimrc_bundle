@@ -11,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
+Plugin 'tpope/vim-sensible'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-syntastic/syntastic'
@@ -83,6 +84,20 @@ nnoremap <space> za
 
 let g:SimpylFold_docstring_preview=1
 
+" sane editing
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set colorcolumn=80 " make a vertical column in the background at 80 characters
+set expandtab
+set viminfo='25,\"50,n~/.viminfo
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" auto-pairs
+" au FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
+
 "PEP 8 Standard - proper indentation for python
 au BufNewFile,BufRead *.py
     \ set tabstop=4
@@ -140,7 +155,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
