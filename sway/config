@@ -2,7 +2,6 @@
 # Read `man 5 sway` for a complete reference.
 #
 # All sway.d/99_*.conf files are in .gitignore
-
 include config.d/*.conf
 #include $HOME/.config/sway/$(hostname)/*.conf
 include /etc/sway/config.d/*

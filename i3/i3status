@@ -1,0 +1,85 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+        markup = "pango"
+        # color_separator = "#FFFFFF"
+}
+
+# order += "ipv6"
+#order += "cpu_temperature 2"
+order += "cpu_usage"
+order += "load"
+order += "wireless wlp2s0"
+#order += "ethernet re0"
+order += "disk /"
+#order += "disk /home"
+order += "memory"
+order += "volume master"
+order += "tztime local"
+
+wireless wlp2s0 {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+        color_bad = "#FF4C00"
+        color_good = "#90EE90"
+}
+ethernet re0 {
+        format_up = "N-LINE"
+        format_down = "FF_LINE"
+        color_bad = "#FF4C00"
+        color_good = "#90EE90"
+}
+
+
+disk "/" {
+        format = "%avail"
+	separator=false
+	
+}
+
+disk "/home"{
+	format = "%avail"
+}
+
+
+cpu_usage {
+	format = " %usage"
+	max_threshold = 89
+}
+
+cpu_temperature 2 {
+	format = " %degrees°C"
+	max_threshold = 49
+}
+
+
+load {
+        format = " [%1min - %5min]"
+}
+
+
+memory {
+        format = " [%used ~ %available]"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = " %F  %H:%M:%S"
+}
+
+volume master {
+        format = " %volume"
+        format_muted = " %volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}

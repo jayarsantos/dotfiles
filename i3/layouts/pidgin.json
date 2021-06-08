@@ -1,0 +1,47 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 845,
+       "width": 398,
+       "x": 5,
+       "y": 29
+    },
+    "name": "Buddy List",
+    "percent": 0.3,
+    "swallows": [
+       {
+       "class": "^Pidgin$",
+       "instance": "^Pidgin$",
+       // "title": "^Buddy\\ List$",
+       "window_role": "^buddy_list$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 839,
+       "width": 1151,
+       "x": 0,
+       "y": 0
+    },
+    //"name": "Arlyn Santos Tumala",
+    "percent": 0.7,
+    "swallows": [
+       {
+       "class": "^Pidgin$",
+       "instance": "^Pidgin$",
+       // "title": "^Arlyn\\ Santos\\ Tumala$",
+       "window_role": "^conversation$"
+       }
+    ],
+    "type": "con"
+}
+

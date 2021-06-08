@@ -36,19 +36,20 @@ alias ds0='du -h --max-depth=0 | sort -n -r'
 alias cdS='cd ~/.config/sway/config.d'
 alias cdP='cd ~/MyPython'
 alias cdL='cd ~/MyPython/Development/LoanApp'
+alias cdI='cd ~/.config/i3'
 
 # This is a region where non-standard programs are used. We should test before.
 
-# sudo fixes for apt-get (check if we have sudo rights and if apt-get exists)
-#if groups $USER | grep &>/dev/null '\bsudo\b'; then
-#    if [ -e /usr/bin/dnf ]; then
+# sudo fixes for dnf (check if we have sudo rights and if dnf exists)
+if groups $USER | grep &>/dev/null '\bsudo\b'; then
+    if [ -e /usr/bin/dnf ]; then
         alias install='sudo dnf install'
         alias remove='sudo dnf remove'
         alias update='sudo dnf update'
         alias upgrade='sudo dnf upgrade'
         alias dist-upgrade='sudo dnf dist-upgrade'
-#    fi
-#fi
+    fi
+fi
 
 
 #Jekyll (Ruby gem for static websites; need to figure out a good way to test)

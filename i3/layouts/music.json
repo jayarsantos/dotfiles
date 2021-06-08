@@ -1,0 +1,64 @@
+
+{
+    // stacked split container with 1 children
+    "layout": "stacked",
+    "percent": 0.6,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "MUSIC",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^URxvt$"
+                    "instance": "^MUSIC$"
+                }
+            ]
+        }
+    ]
+}
+{
+    // splitv split container with 2 children
+    "layout": "splitv",
+    "percent": 0.4,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "none",
+            "name": "Visualizer",
+            "percent": 0.5,
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^URxvt$",
+                    "instance": "^Visu$"
+                }
+            ]
+        },
+        {
+            // stacked split container with 2 children
+            "layout": "stacked",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "name": "CLOCK",
+                    "percent": 0.5,
+                    "type": "con",
+                    "swallows": [
+                        {
+                            "class": "^URxvt$",
+                            "instance": "^CLOCK$"
+                        }
+                    ]
+                },
+                {
+                    "name": "midna: ~",
+                    "percent": 0.5,
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+

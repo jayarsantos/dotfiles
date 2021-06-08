@@ -1,0 +1,57 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 851,
+       "width": 459,
+       "x": 13,
+       "y": 32
+    },
+    "name": "Buddy List",
+    "percent": 0.25,
+    "swallows": [
+       {
+        "class": "^Pidgin$",
+        "instance": "^Pidgin$",
+       // "title": "^Buddy\\ List$",
+        "window_role": "^buddy_list$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splith split container with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": 0.75,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 870,
+               "width": 1147,
+               "x": 0,
+               "y": 0
+            },
+            "name": "(Jairel&Eyzee Atchara)",
+            "percent": null,
+            "swallows": [
+               {
+                "class": "^Pidgin$",
+                "instance": "^Pidgin$",
+               // "title": "^\\(Jairel\\&Eyzee\\ Atchara\\)$",
+                "window_role": "^conversation$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
