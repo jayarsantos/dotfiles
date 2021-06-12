@@ -34,7 +34,6 @@ after_lock() {
 case "$1" in
 	logout)
 		before_lock
-		systemctl --user stop sway.service
 		swaymsg exit
 		;;
 	lock)
@@ -49,10 +48,10 @@ case "$1" in
 		after_lock
 		;;
 	reboot)
-		loginctl reboot
+		systemctl reboot
 		;;
 	shutdown)
-		loginctl poweroff
+		systemctl poweroff
 		;;
 	*)
 		echo "Usage: $0 {lock|suspend|reboot|shutdown}"
