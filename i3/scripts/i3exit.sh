@@ -10,6 +10,26 @@ _lock() {
 	i3lock -i "$tmpbg"
 }
 
+before_lock() {
+	#bluetoothctl disconnect
+	#playerctl -a pause
+	#reset_kbd
+	#systemctl --user stop redshift.service
+	systemctl --user stop dunst.service
+}
+
+after_lock() {
+	#sleep 5
+	#systemctl --user start redshift.service
+	#if [[ $xdg == failed ]] || [[ $xdg == inactive ]]; then
+	#	systemctl --user start xdg-desktop-portal-gtk.service
+	#fi
+
+	systemctl --user start dunst.service
+	#sleep 10
+	notify-send "dunst has been loaded."
+}
+
 lock() {
 	case "$2" in
 		-f)
@@ -27,13 +47,20 @@ lock() {
 
 case "$1" in
     lock)
-        lock $1 $2
+        # lock $1 $2
+        # use gnome instead
+        before_lock
+        dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
+        after_lock
         ;;
     logout)
+        before_lock
         i3-msg exit
         ;;
     suspend)
+        before_lock
         lock $1 $2 && systemctl suspend
+        after_lock
         ;;
     hibernate)
         lock $1 $2 && systemctl hibernate
@@ -41,11 +68,11 @@ case "$1" in
     reboot)
         systemctl reboot
         ;;
-    shutdown)
+    poweroff)
         systemctl poweroff
         ;;
     *)
-        echo "Usage: i3exit {lock|logout|suspend|hibernate|reboot|shutdown}"
+        echo "Usage: i3exit {lock|logout|suspend|hibernate|reboot|poweroff}"
         exit 2
 esac
 

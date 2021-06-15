@@ -24,6 +24,8 @@ set $right l
 set $mod Mod4
 set $alt Mod1
 set $term gnome-terminal
+set $intern LVDS-1
+set $extern VGA-1
 set $focus_output focus output
 
 # important to set preferred gaps
@@ -146,16 +148,16 @@ set $ws8 "8 ❽ Chat"
 set $ws9 "9 ❾ VMWare"
 set $ws10 "10 ❿ Spare"
 
-workspace $ws1 output VGA-1
-workspace $ws2 output VGA-1
-workspace $ws3 output VGA-1
-workspace $ws4 output VGA-1
-workspace $ws5 output VGA-1
-workspace $ws6 output VGA-1
-workspace $ws7 output LVDS-1
-workspace $ws8 output LVDS-1
-workspace $ws9 output LVDS-1
-workspace $ws10 output LVDS-1
+workspace $ws1 output $extern
+workspace $ws2 output $extern
+workspace $ws3 output $extern
+workspace $ws4 output $extern
+workspace $ws5 output $extern
+workspace $ws6 output $extern
+workspace $ws7 output $intern
+workspace $ws8 output $intern
+workspace $ws9 output $intern
+workspace $ws10 output $intern
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -433,11 +435,15 @@ for_window [instance="dropdown_terminal"] resize set 1299 660
 for_window [instance="dropdown_terminal"] border pixel 2
 for_window [instance="dropdown_calendar"] resize set 1299 660
 for_window [instance="dropdown_calendar"] border pixel 2
-# always open some programs on specified workspace
+
+# open applications in specified workspace
+
+assign [class="Gnome-terminal"]				            $ws2
 assign [class="Google-chrome" title="Google Keep"]	    $ws3
 assign [class="qutebrowser"]				            $ws3
 assign [class="Firefox"]				                $ws3
 assign [class="Pidgin"]                                 $ws8
+assign [class="Org.gnome.Nautilus"]		                $ws4
 assign [class="Caprine" title="Messenger"]		        $ws8
 assign [class=".*(G|g)oogle-chrome.*"]			        $ws3
 assign [class="Gimp"]					                $ws6
@@ -519,11 +525,16 @@ bar {
 }
 
 ### Autostart applications
+#exec --no-startup-id lxpolkit
+exec --no-startup-id systemctl --user start dunst
+exec --no-startup-id xinput float 17
+#disable laptop keyboard
+# get along with gnome
+exec --no-startup-id gnome-flashback
+exec --no-startup-id /usr/libexec/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/bin/gnome-screensaver
+# exec --no-startup-id /usr/bin/snap userd --autostart
+exec --no-startup-id sh ~/.config/i3/scripts/setDisplay.sh
 exec --no-startup-id alacritty --class dropdown_terminal
 exec --no-startup-id alacritty --class dropdown_calendar -e calcurse
-exec --no-startup-id lxpolkit
-exec --no-startup-id sh ~/.config/i3/scripts/setbg_Laptop.sh
-exec --no-startup-id /usr/bin/snap userd --autostart
-#disable laptop keyboard
-exec --no-startup-id xinput float 17
-exec --no-startup-id systemctl --user start dunst

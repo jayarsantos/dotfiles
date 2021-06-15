@@ -2,7 +2,7 @@
 #xdg=$(systemctl --user status xdg-desktop-portal-gtk | grep 'Active' | awk '{print $2}')
 
 lock() {
-	#swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+	# swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
 	swaylock -C ~/.config/swaylock/config
 }
 
@@ -13,10 +13,10 @@ reset_kbd() {
 
 before_lock() {
 	#bluetoothctl disconnect
-	playerctl -a pause
-	reset_kbd
+	#playerctl -a pause
+	#reset_kbd
 	#systemctl --user stop redshift.service
-	#systemctl --user stop mako.service
+	systemctl --user stop mako.service
 }
 
 after_lock() {
@@ -26,9 +26,9 @@ after_lock() {
 	#	systemctl --user start xdg-desktop-portal-gtk.service
 	#fi
 
-	#systemctl --user start mako.service
+	systemctl --user start mako.service
 	#sleep 10
-	#notify-send "redshift and mako has been loaded."
+	notify-send "mako has been loaded."
 }
 
 case "$1" in
