@@ -12,6 +12,7 @@ call plug#begin()
  Plug 'tpope/vim-sensible'
  Plug 'itchyny/lightline.vim'
  Plug 'joshdick/onedark.vim'
+ Plug 'phanviet/vim-monokai-pro'
  Plug 'ap/vim-buftabline'
  Plug 'airblade/vim-gitgutter'
  Plug 'preservim/nerdtree'
@@ -106,6 +107,7 @@ endfunction
 
 " color scheme
 syntax on
+
 colorscheme onedark
 filetype on
 filetype plugin indent on
