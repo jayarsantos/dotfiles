@@ -1,0 +1,17 @@
+local widgets_path = icon_dir .. chosen_theme .. "/widgets/"
+
+-- Define the image to load
+theme.widget_temp                               = widgets_path .. "temp.png"
+theme.widget_uptime                             = widgets_path .. "ac.png"
+theme.widget_cpu                                = widgets_path .. "cpu.png"
+theme.widget_weather                            = widgets_path .. "dish.png"
+theme.widget_fs                                 = widgets_path .. "fs.png"
+theme.widget_mem                                = widgets_path .. "mem.png"
+theme.widget_note                               = widgets_path .. "note.png"
+theme.widget_note_on                            = widgets_path .. "note_on.png"
+theme.widget_netdown                            = widgets_path .. "net_down.png"
+theme.widget_netup                              = widgets_path .. "net_up.png"
+theme.widget_mail                               = widgets_path .. "mail.png"
+theme.widget_batt                               = widgets_path .. "bat.png"
+theme.widget_clock                              = widgets_path .. "clock.png"
+theme.widget_vol                                = widgets_path .. "spkr.png"
