@@ -115,13 +115,13 @@ function _M.get()
 	--   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 	-- Volume Keys
 
-	awful.key({ modkey }, 'F3',
+	awful.key({ modkey }, 'F11',
 	function() volumecfg:up() end,
 	{description = 'volume 0%', group = 'hotkeys'}),
-	awful.key({ modkey }, 'F2',
+	awful.key({ modkey }, 'F10',
 	function() volumecfg:down() end,
 	{description = 'volume 0%', group = 'hotkeys'}),
-	awful.key({ modkey }, 'F4',
+	awful.key({ modkey }, 'F12',
 	function() volumecfg:toggle() end,
 	{description = 'volume 0%', group = 'hotkeys'}),
 

@@ -3,11 +3,11 @@ awful.util = require("awful.util")
 
 -- available themes: multicolor, cesious, zenburn, pro-dark, powerarrow-dark, powerarrow
 --chosen_theme = "ayu"
-chosen_theme = "multicolor"
+--chosen_theme = "multicolor"
 --chosen_theme = "cesious"
 --chosen_theme = "zenburn"
 --chosen_theme = "pro-dark"
---chosen_theme = "powerarrow"
+chosen_theme = "powerarrow"
 --chosen_theme = "powerarrow-dark"
 
 local config = {

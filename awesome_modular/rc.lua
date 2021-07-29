@@ -74,15 +74,22 @@ awful.rules.rules = main.rules(
 -- Signals
 require("main.signals")
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
--- startup applications
-function run_once(cmd)                 
- local findme = "ps x U $USER |grep '" .. cmd .. "' |wc -l"              
- awful.spawn.easy_async_with_shell( findme ,
-   function(stdout,stderr,reason,exit_code) 
-     if tonumber(stdout) <= 2 then
-       awful.spawn( cmd )
-     end
-   end)
-end    
+-- {{{ Autostart windowless processes
+-- This function will run once every time Awesome is started
+local function run_once(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
+    end
+end
+
+run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
 
 awful.spawn.with_shell("/home/jayar/.config/awesome/scripts/autorun.sh")
+--
+-- This function implements the XDG autostart specification
+awful.spawn.with_shell(
+    'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
+    'xrdb -merge <<< "awesome.started:true";' ..
+    -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
+    'dex --autostart --search-paths "~/.config/autostart"' -- https://github.com/jceb/dex
+)

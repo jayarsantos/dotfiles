@@ -11,7 +11,7 @@ local _M = {
 	-- This is used later as the default terminal and editor to run.
 	locker = "xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 1",
 	youtubedownload = "youtube-dl-gui",
-	terminal = "xfce4-terminal",
+	terminal = "st",
 	ranger = "st -e ranger",
 	quake = "st --title QuakeTerminal",
 	quakeranger = "st --title QuakeRanger -e ranger",

@@ -43,7 +43,7 @@ M.myexitmenu = {
 	{ "suspend", "systemctl suspend", menubar.utils.lookup_icon("system-suspend") },
 	{ "hibernate", "systemctl hibernate", menubar.utils.lookup_icon("system-suspend-hibernate") },
 	{ "reboot", "systemctl reboot", menubar.utils.lookup_icon("system-reboot") },
-	{ "shutdown", "poweroff", menubar.utils.lookup_icon("system-shutdown") }
+	{ "shutdown", "systemctl poweroff", menubar.utils.lookup_icon("system-shutdown") }
 }
 M.desktopmenu = {
 	{"Gmail", "dex /home/jayar/.local/share/applications/chrome-gmail.desktop"},

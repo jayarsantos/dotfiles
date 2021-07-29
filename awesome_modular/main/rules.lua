@@ -50,6 +50,10 @@ function _M.get(clientkeys, clientbuttons)
 					"Nm-connection-editor",
                     "Tk",
                     "Thunar",
+                    "Xfce4-appfinder",
+                    "Software-properties-gtk",
+                    "Gnome-calculator",
+                    "Synaptic",
 					"mpv"
 				},
 

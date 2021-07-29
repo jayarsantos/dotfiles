@@ -5,7 +5,7 @@
 
 local themes_path = require("gears.filesystem").get_themes_dir()
 local dpi = require("beautiful.xresources").apply_dpi
-
+--local wallpaper = require("wallchange") -- wallpaper changes on specific time
 -- {{{ Main
 local theme = {}
 theme.wallpaper = themes_path .. "zenburn/wallpaper.jpg"
@@ -25,7 +25,7 @@ theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(2)
 theme.border_normal = "#3F3F3F"
 theme.border_focus  = "#6F6F6F"

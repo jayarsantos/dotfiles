@@ -22,6 +22,9 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+--load wallpaper specific for time of the day
+require("wallchange")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -47,13 +50,39 @@ do
 end
 -- }}}
 
+-- {{{ Autostart windowless processes
+
+-- This function will run once every time Awesome is started
+local function run_once(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
+    end
+end
+
+run_once({ "urxvtd", "unclutter -root", "/home/jayar/.config/awesome/scripts/autorun.sh" }) -- comma-separated entries
+
+-- This function implements the XDG autostart specification
+awful.spawn.with_shell(
+    'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
+    'xrdb -merge <<< "awesome.started:true";' ..
+    -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
+    'dex --environment Awesome --autostart --search-paths "/home/jayar/.config/autostart"' -- https://github.com/jceb/dex
+)
+
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
---beautiful.init("~/.config/awesome/themes/default/theme.lua")
---beautiful.init("~/.config/awesome/themes/xresources/theme.lua")
---beautiful.init("~/.config/awesome/themes/sky/theme.lua")
---beautiful.init("~/.config/awesome/themes/gtk/theme.lua")
-beautiful.init("~/.config/awesome/themes/zenburn/theme.lua")
+
+local themes = {
+    "default",      -- 1
+    "gtk",          -- 2
+    "sky",          -- 3
+    "xresources",   -- 4
+    "zenburn",      -- 5
+}
+
+local chosen_theme = themes[1]
+
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
@@ -68,10 +97,11 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.floating,
-    awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.floating,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
@@ -170,6 +200,7 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
+--[[ wallpaper setup
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
@@ -185,9 +216,45 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- {{ Function definitions
+
+-- scan directory, and optionally filter outputs
+function scandir(directory, filter)
+    local i, t, popen = 0, {}, io.popen
+    if not filter then
+        filter = function(s) return true end
+    end
+    print(filter)
+    for filename in popen('ls -a "'..directory..'"'):lines() do
+        if filter(filename) then
+            i = i + 1
+            t[i] = filename
+        end
+    end
+    return t
+end
+
+-- }}
+
+-- configuration 
+wp_index = 1
+wp_path = "/home/jayar/Pictures/wallpaper/"
+wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
+wp_files = scandir(wp_path, wp_filter) 
+                                          
+gears.timer.start_new (3600, function() 
+  for s = 1, screen.count() do
+    gears.wallpaper.maximized(wp_path .. wp_files[wp_index], s, true)
+  end
+  math.randomseed( os.time() )
+  wp_index = math.random( 1, #wp_files)
+    return true
+end)
+--]] --END wallpaper setup
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
-    set_wallpaper(s)
+    --set_wallpaper(s)
 
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -299,7 +366,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Control"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -346,7 +413,11 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+	awful.key({ modkey }, 'p', function () awful.spawn(
+        "dmenu_run -fn 'Source Code Pro Regular-11' -i -l 10 -p 'Run:' -nb \
+        '#2d2d2d' -nf '#cccccc' -sb '#ff033e' -sf '#38000d'"
+        ) end, {description = 'run prompt', group = 'launcher'}),
+    awful.key({ modkey }, "y", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -357,7 +428,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey, "Control"   }, "x",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -497,6 +568,7 @@ awful.rules.rules = {
           "veromix",
           "Tk",
           "Thunar",
+          "Xfce4-appfinder",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -517,8 +589,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Firefox" },
+      properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 

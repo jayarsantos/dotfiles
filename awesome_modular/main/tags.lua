@@ -13,7 +13,7 @@ function _M.get ()
 	-- local layouts = { l.max, l.floating, l.max, l.max , l.tile,
 	--     l.max, l.max, l.max, l.floating, l.tile}
 	local layouts = {
-		l.tile.bottom, l.max, l.tile, l.tile , l.max,
+		l.tile.top, l.max, l.tile, l.tile , l.max,
 		l.floating, l.max, l.tile, l.tile, l.max
 	}
 
