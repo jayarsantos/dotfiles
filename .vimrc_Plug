@@ -12,8 +12,6 @@ call plug#begin()
  Plug 'tpope/vim-sensible'
  Plug 'itchyny/lightline.vim'
  Plug 'joshdick/onedark.vim'
- Plug 'phanviet/vim-monokai-pro'
- Plug 'ap/vim-buftabline'
  Plug 'airblade/vim-gitgutter'
  Plug 'preservim/nerdtree'
  Plug 'jistr/vim-nerdtree-tabs'
@@ -22,14 +20,9 @@ call plug#begin()
  Plug 'dense-analysis/ale'
  Plug 'majutsushi/tagbar'
  Plug 'vim-scripts/indentpython.vim'
- Plug 'lepture/vim-jinja'
- Plug 'pangloss/vim-javascript'
- Plug 'alvan/vim-closetag'
- Plug 'maxmellon/vim-jsx-pretty'
- Plug 'terminalnode/sway-vim-syntax'
  Plug 'ycm-core/YouCompleteMe'
- Plug 'puremourning/vimspector'
  Plug 'christoomey/vim-tmux-navigator'
+ Plug 'vimwiki/vimwiki'
 call plug#end()
 
 if need_to_install_plugins == 1
@@ -233,6 +226,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8', 'python3']
