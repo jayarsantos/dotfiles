@@ -14,7 +14,8 @@ set $term-float xfce4-terminal
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi -c ~/.config/wofi/config -I
+set $w-menu wofi -c ~/.config/wofi/config -I
+set $menu ulauncher-toggle
 
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
 
@@ -46,9 +47,10 @@ exec swayidle -w\
 
     # Start your launcher
     bindsym $mod+y exec $menu
+    bindsym $mod+p exec $w-menu
     
     # Activities
-    bindsym $mod+p exec ~/.config/wofi/windows.py
+    bindsym $alt+Tab exec ~/.config/wofi/windows.py
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

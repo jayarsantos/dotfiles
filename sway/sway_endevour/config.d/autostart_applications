@@ -17,6 +17,3 @@ exec dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 
 # Sway Fader
 exec python3 ~/.config/sway/scripts/swayfader.py      
-
-# load gnome settings
-exec_always bash ~/.config/sway/scripts/import-gsettings
