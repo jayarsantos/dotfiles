@@ -31,6 +31,7 @@ for_window [app_id="yad"] floating enable
 for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
 for_window [app_id="zenity"] floating enable, move position 650 -5
 for_window [app_id="transmission-gtk"] floating enable
+for_window [class="Transmission-gtk"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Tk"] floating enable, move window to center
 for_window [app_id="file-roller"] floating enable

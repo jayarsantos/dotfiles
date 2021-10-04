@@ -193,9 +193,12 @@ bindsym --to-code {
    #bindsym --locked $mod+F9 exec pamixer -t
    #
 # below works for pipewire
-    F10 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    F9 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    Ctrl+F9 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    #F10 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    #F9 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    F10 exec ~/.local/bin/volume_change.sh volup
+    F9 exec  ~/.local/bin/volume_change.sh voldown
+    Ctrl+F9 exec ~/.local/bin/volume_change.sh volmute
+    #Ctrl+F9 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     Ctrl+$alt+F9 exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 #
 #
