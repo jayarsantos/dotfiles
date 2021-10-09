@@ -31,9 +31,8 @@ import subprocess
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = "st"
@@ -126,7 +125,18 @@ keys = [
     Key(["control"], "F9", lazy.spawn("./.local/bin/volume_change.sh volmute"),
         desc="Mute sound volume"
         ),
+
+    # App bindings
+    KeyChord([mod], "l", [
+        Key([], "g", lazy.spawn("google-chrome-stable")),
+        Key([], "c", lazy.spawn("gnome-calculator")),
+        Key([], "f", lazy.spawn("firefox")),
+        Key([], "x", lazy.spawn("thunar")),
+        Key([], "t", lazy.spawn("thunderbird"))
+        ]),
 ]
+
+
 
 group_names = [
     ("code", {"layout": "monadtall",
