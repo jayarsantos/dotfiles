@@ -35,14 +35,16 @@ from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
+
 if qtile.core.name == "x11":
     terminal = "st"
-    launcher1 = "rofi -modi run,drun,window -lines 12 -padding 18 -width 60 \
-                    -location 0 -show drun -sidebar-mode -columns 3"
-    launcher2 = "dmenu_run -fn 'Source Code Pro Regular-11' -i -l 10 \
-            -p 'Run:' -nb '#2d2d2d' -nf '#cccccc' -sb '#ff033e' -sf '#38000d'"
 elif qtile.core.name == "wayland":
-    terminal = "foot"
+    term = "foot"
+
+launcher1 = "rofi -modi run,drun,window -lines 12 -padding 18 -width 60 \
+                -location 0 -show drun -sidebar-mode -columns 3"
+launcher2 = "dmenu_run -fn 'Source Code Pro Regular-11' -i -l 10 \
+        -p 'Run:' -nb '#2d2d2d' -nf '#cccccc' -sb '#ff033e' -sf '#38000d'"
 
 keys = [
     # Switch between windows
@@ -396,11 +398,24 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 
-
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')
     subprocess.Popen([home + '/.config/qtile/autostart.sh'])
+
+@hook.subscribe.startup
+def dbus_register():
+    id = os.environ.get('DESKTOP_AUTOSTART_ID')
+    if not id:
+        return
+    subprocess.Popen(['dbus-send',
+                      '--session',
+                      '--print-reply',
+                      '--dest=org.gnome.SessionManager',
+                      '/org/gnome/SessionManager',
+                      'org.gnome.SessionManager.RegisterClient',
+                      'string:qtile',
+                      'string:' + id])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
