@@ -36,6 +36,7 @@ for_window [class="Galculator"] floating enable
 for_window [class="Tk"] floating enable, move window to center
 for_window [app_id="file-roller"] floating enable
 for_window [class="System-config-printer.py"] floating enable, move window to center
+for_window [class="Nitrogen"] floating enable, move window to center
 
 # set floating (nontiling) for special apps:
 for_window [class="Xsane" instance="xsane"] floating enable
