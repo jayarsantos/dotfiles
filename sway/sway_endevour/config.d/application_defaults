@@ -8,20 +8,24 @@ for_window [class="Google-chrome"] focus
 assign [class="firefox"] 2
 for_window [class="firefox"] focus
 
-assign [app_id=thunar] 3
+assign [app_id=Thunar] 4
+for_window [app_id=Thunar] focus
+assign [app_id=thunar] 4
 for_window [app_id=thunar] focus
 
-assign [app_id=thunderbird] 4
+assign [app_id=thunderbird] 3
 for_window [app_id=thunderbird] focus
 
-assign [class=Thunderbird] 4
+assign [class=Thunderbird] 3
 for_window [class=Thunderbird] focus
 
-assign [class="Telegram"] 4
+assign [class="Telegram"] 3
 for_window [class="Telegram"] focus
 
-assign [class="libreoffice-calc"] 5
-for_window [class="libreoffice-calc"] focus
+assign [class="libreoffice-*"] 5
+for_window [class="libreoffice-*"] focus
+assign [app_id="libreoffice-*"] 5
+for_window [app_id="libreoffice-*"] focus
 
 for_window [app_id="xed"] focus
 
@@ -32,7 +36,9 @@ for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt 
 for_window [app_id="zenity"] floating enable, move position 650 -5
 for_window [app_id="transmission-gtk"] floating enable
 for_window [class="Transmission-gtk"] floating enable
-for_window [class="Galculator"] floating enable
+for_window [class="Galculator"] floating enable, move position 1225 -2
+for_window [app_id="galculator"] floating enable, move position 1225 -2
+for_window [app_id="gnome-calculator"] floating enable, move position 1225 -2
 for_window [class="Tk"] floating enable, move window to center
 for_window [app_id="file-roller"] floating enable
 for_window [class="System-config-printer.py"] floating enable, move window to center

@@ -1,6 +1,11 @@
-#!/usr/bin/env bash 
+#!/bin/sh
 
-#nitrogen --restore &
+# systray battery icon
+cbatticon -u 5 &
+# systray volume
+volumeicon &
+
+nitrogen --restore &
 #conky -c $HOME/.config/conky/doomone-qtile.conkyrc
 
 # Graphical authentication agent

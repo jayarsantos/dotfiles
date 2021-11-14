@@ -36,7 +36,7 @@ from libqtile.lazy import lazy
 
 mod = "mod4"
 if qtile.core.name == "x11":
-    terminal = "st"
+    terminal = "xfce4-terminal"
     launcher1 = "rofi -modi run,drun,window -lines 12 -padding 18 -width 60 \
                     -location 0 -show drun -sidebar-mode -columns 3"
     launcher2 = "dmenu_run -fn 'Source Code Pro Regular-11' -i -l 10 \
@@ -105,32 +105,28 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(),
-            desc="Toggle between layouts"),
+        desc="Toggle between layouts"),
     Key([mod, "control"], "x", lazy.window.kill(),
-            desc="Kill focused window"),
-
+        desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.restart(),
-            desc="Restart Qtile"),
+        desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(),
-            desc="Shutdown Qtile"),
-    Key([mod], "p", lazy.spawncmd(),
+        desc="Shutdown Qtile"),
+    Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
     Key([mod], "y", lazy.spawn(launcher1),
         desc="launch application launcher"),
     Key([mod, "control"], "y", lazy.spawn(launcher2),
         desc="launch application launcher"),
     Key([mod], "F10", lazy.spawn("./.local/bin/volume_change.sh volup"),
-        desc="Raise sound volume"
-        ),
+        desc="Raise sound volume"),
     Key([mod], "F9", lazy.spawn("./.local/bin/volume_change.sh voldown"),
-        desc="Lower sound volume"
-        ),
+        desc="Lower sound volume"),
     Key(["control"], "F9", lazy.spawn("./.local/bin/volume_change.sh volmute"),
-        desc="Mute sound volume"
-        ),
+        desc="Mute sound volume"),
 
     # App bindings
-    KeyChord([mod], "l", [
+    KeyChord([mod], "p", [
         Key([], "g", lazy.spawn("google-chrome-stable")),
         Key([], "c", lazy.spawn("gnome-calculator")),
         Key([], "f", lazy.spawn("firefox")),
@@ -138,8 +134,6 @@ keys = [
         Key([], "t", lazy.spawn("thunderbird"))
         ]),
 ]
-
-
 
 group_names = [
     ("code", {"layout": "monadtall",
