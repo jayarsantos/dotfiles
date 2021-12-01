@@ -8,7 +8,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'davidhalter/jedi-vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-jedi'
+    Plug 'zchee/deoplete-jedi' " source completion for python
+                               " pip install pynvim jedi
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'jiangmiao/auto-pairs'
