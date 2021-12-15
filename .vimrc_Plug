@@ -33,10 +33,30 @@ if need_to_install_plugins == 1
     q
 endif
 
+" Needed by vimwiki
+set nocompatible
+filetype plugin on
+" color scheme
+syntax on
+
+colorscheme onedark
+filetype on
+filetype plugin indent on
+
+" lightline
+set noshowmode
+let g:lightline = { 'colorscheme': 'onedark' }
+
 " always show the status bar
 set laststatus=2
 " let copy and paste be seamles
 set clipboard=unnamed
+"" copy, cut and paste
+vmap <C-c> "+y
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+
 " turn on line numbering
 set number
 
@@ -57,6 +77,8 @@ autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " auto-pairs
 au FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
+" avoid breaking autopairs when Return key is pressed
+let g:AutoPairsMapCR = 0
 
 "Let us change the cursor type for each mode
 if has("autocmd")
@@ -69,19 +91,6 @@ if has("autocmd")
     \ endif
   au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 endif
-
-" word movement
-imap <S-Left> <Esc>bi
-nmap <S-Left> b
-imap <S-Right> <Esc><Right>wi
-nmap <S-Right> w
-
-" indent/unindent with tab/shift-tab
-nmap <Tab> >>
-nmap <S-tab> <<
-imap <S-Tab> <Esc><<i
-vmap <Tab> >gv
-vmap <S-Tab> <gv
 
 " mouse
 set mouse=a
@@ -99,16 +108,18 @@ function ToggleMouse()
     endif
 endfunction
 
-" color scheme
-syntax on
+" word movement
+imap <S-Left> <Esc>bi
+nmap <S-Left> b
+imap <S-Right> <Esc><Right>wi
+nmap <S-Right> w
 
-colorscheme onedark
-filetype on
-filetype plugin indent on
-
-" lightline
-set noshowmode
-let g:lightline = { 'colorscheme': 'onedark' }
+" indent/unindent with tab/shift-tab
+nmap <Tab> >>
+nmap <S-tab> <<
+imap <S-Tab> <Esc><<i
+vmap <Tab> >gv
+vmap <S-Tab> <gv
 
 "split layout
 set splitbelow
@@ -119,6 +130,17 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" move through split windows
+nmap <leader><Up> :wincmd k<CR>
+nmap <leader><Down> :wincmd j<CR>
+nmap <leader><Left> :wincmd h<CR>
+nmap <leader><Right> :wincmd l<CR>
+
+" move through buffers
+nmap <leader>[ :bp!<CR>
+nmap <leader>] :bn!<CR>
+nmap <leader>x :bd<CR>
 
 " code folding
 set foldmethod=indent
@@ -156,17 +178,6 @@ function ToggleWrap()
     endif
 endfunction
 
-" move through split windows
-nmap <leader><Up> :wincmd k<CR>
-nmap <leader><Down> :wincmd j<CR>
-nmap <leader><Left> :wincmd h<CR>
-nmap <leader><Right> :wincmd l<CR>
-
-" move through buffers
-nmap <leader>[ :bp!<CR>
-nmap <leader>] :bn!<CR>
-nmap <leader>x :bd<CR>
-
 " restore place in file from previous session
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -202,12 +213,6 @@ map <C-r> <Plug>(ale_previous_wrap)
 " tags
 map <leader>t :TagbarToggle<CR>
 
-"" copy, cut and paste
-vmap <C-c> "+y
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
-
 " disable autoindent when pasting text
 " source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
 let &t_SI .= "\<Esc>[?2004h"
@@ -225,6 +230,15 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+"vimwiki configs
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', 
+                      \'.mdown': 'markdown'}
+" Makes vimwiki markdown links as [text](text.md) instead of [text](text)
+let g:vimwiki_markdown_link_ext = 1
+
+" syntastic configs
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
