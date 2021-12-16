@@ -245,16 +245,19 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8', 'python3']
 
-" Update my git folders automatically
-" the script is located in ~/.local/bin/
-" important!!! set the git directories in the script
-" clone my git dotfiles in ~/MyConfigs, I use ssh
-" git@github.com:jayarsantos/dotfiles.git
+" Update my git dotfiles folder automatically
 if !isdirectory($HOME . "/MyConfigs")
+    " for sure this directory exists as this config is located inside
+    " this is a joke... heheh or this will be useful if this config is
+    " used independently
     call mkdir($HOME . "/MyConfigs", "p", 0700)
-    git clone git@github.com:jayarsantos/dotfiles.git $HOME/MyConfigs/
+    " clone my dotfiles, I use ssh
+    !git clone git@github.com:jayarsantos/dotfiles.git $HOME/MyConfigs/
 elseif empty(glob('~/.local/bin/autoupdate_git.sh'))
-    ln ~/MyConfigs/bin/autoupdate_git.sh ~/.local/bin/autoupdate_git.sh
+    " create the link if it is not yet created
+    !ln ~/MyConfigs/bin/autoupdate_git.sh ~/.local/bin/autoupdate_git.sh
 else
+    " finally run the command to update my dotfiles in git
+    " upon leaving vim
     autocmd BufWinLeave * !autoupdate_git.sh %:p
 endif
