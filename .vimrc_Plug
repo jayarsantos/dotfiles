@@ -259,5 +259,5 @@ elseif empty(glob('~/.local/bin/autoupdate_git.sh'))
 else
     " finally run the command to update my dotfiles in git
     " upon leaving vim
-    autocmd BufWinLeave * !autoupdate_git.sh %:p
+    autocmd BufWritePost * !autoupdate_git.sh %:p
 endif
