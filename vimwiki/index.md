@@ -3,6 +3,9 @@
 
 # Notes and Other Stuffs :
 
+###Gnome
+* [CustomKeybindings](CustomKeybindings.md)
+
 * [PersonalNotes](PersonalNotes.md) -- Notes to remind me of things
 * [Tasks](Tasks) -- things to be done _yesterday_!!!
 * [Project]([[Project]]) Gutenberg -- good books are power.
