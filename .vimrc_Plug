@@ -247,4 +247,9 @@ let g:syntastic_python_checkers=['flake8', 'python3']
 
 " Update my git folders automatically
 " the script is located in ~/.local/bin/
-autocmd BufWinLeave * !autoupdate_git.sh %:p
+if empty(glob('~/.local/bin/autoupdate_git.sh'))
+    ln ~/MyConfigs/bin/autoupdate_git.sh ~/.local/bin/autoupdate_git.sh
+elseif
+    autocmd BufWinLeave * !autoupdate_git.sh %:p
+endif
+
