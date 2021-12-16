@@ -49,7 +49,8 @@ let g:lightline = { 'colorscheme': 'onedark' }
 
 " always show the status bar
 set laststatus=2
-" let copy and paste be seamles
+" let copy and paste be seamless
+" check if vim has clipboard features (like for arch need install gvim)
 set clipboard=unnamed
 "" copy, cut and paste
 vmap <C-c> "+y
@@ -74,7 +75,6 @@ set expandtab
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
 " auto-pairs
 au FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
 " avoid breaking autopairs when Return key is pressed
@@ -244,3 +244,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8', 'python3']
+
+autocmd BufWinLeave * !~/.vim/update_git.sh %:p
