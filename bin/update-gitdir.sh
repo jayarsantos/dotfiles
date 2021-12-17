@@ -11,7 +11,7 @@ git_push(){
     for dir in dir1 dir2
     do
         dir=$((dir + 1))
-        if [ -z "$(ls -A $dir)" ]; then
+        if find $dir -mindepth 1 -maxdepth 1 | read; then
             echo "Empty"
         else
             echo "Not Empty"
