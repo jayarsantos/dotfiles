@@ -35,6 +35,7 @@ alias txz='tar -cJpf'
 alias reload='source ~/.bashrc'
 alias ds1='du -h --max-depth=1 | sort -n -r'
 alias ds0='du -h --max-depth=0 | sort -n -r'
+alias cdL='cd $HOME/LoanApp; update-gitdir.sh pull'
 
 # This is a region where non-standard programs are used. We should test before.
 
