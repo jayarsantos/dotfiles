@@ -25,6 +25,7 @@ fi
 
 echo "Exiting Folder"
 
+echo "$dir1 $dir2"
 }
 
 update_LoanApp(){
