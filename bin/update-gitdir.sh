@@ -54,16 +54,19 @@ echo "Exiting Folder"
 }
 
 case "$1" in
-'DotFiles')
-update_MyConfigs
-;;
-'LoanApp')
-update_LoanApp
-;;
-'all')
-update_LoanApp &&
-update_MyConfigs
-;;
+    'DotFiles')
+        update_MyConfigs
+        ;;
+    'LoanApp')
+        update_LoanApp
+        ;;
+    'all')
+        update_LoanApp &&
+        update_MyConfigs
+        ;;
+    'push')
+        git_push
+        ;;
 '')
 echo "script preceeding DotFiles, LoanApp, or all"
 ;;
