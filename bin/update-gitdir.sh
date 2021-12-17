@@ -33,9 +33,9 @@ git_pull(){
 
         cd $dir
         if git merge-base --is-ancestor origin/main main; then
-            echo Empty
+            echo "Your git folders are up-to-date"
         else
-            echo "Don't forget to rebase!"
+            git pull
         fi
     done
 
