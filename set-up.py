@@ -30,9 +30,9 @@ def Main():
     build_file = p.join( DIR_OF_THIS_SCRIPT, 'third_party', 'ycmd', 'build.py' )
 
     if not p.isfile( build_file ):
-    sys.exit(
-      'File {0} does not exist; you probably forgot to run:\n'
-      '\tgit submodule update --init --recursive\n'.format( build_file ) )
+        sys.exit(
+          'File {0} does not exist; you probably forgot to run:\n'
+          '\tgit submodule update --init --recursive\n'.format( build_file ) )
 
   CheckCall( [ sys.executable, build_file ] + sys.argv[ 1: ] )
 
