@@ -3,10 +3,17 @@
 dir1=$HOME/MyConfigs
 dir2=$HOME/LoanApp
 
-echo "$dir1 $dir2"
-
 git_push(){
-    dirs=($dir1, $dir2, $dir3)
+    
+    for i in 1 2
+    do
+        if [ -z "$(ls -A $dir)" ]; then
+            echo "Empty"
+        else
+            echo "Not Empty"
+        fi
+    done
+
 
 }
 
@@ -25,7 +32,6 @@ fi
 
 echo "Exiting Folder"
 
-echo "$dir1 $dir2"
 }
 
 update_LoanApp(){
