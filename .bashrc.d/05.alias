@@ -42,13 +42,14 @@ alias update_all_git='update-gitdir.sh pullpush'
 
 # sudo fixes for dnf (check if we have sudo rights and if dnf exists)
 if groups $USER | grep &>/dev/null '\bsudo\b'; then
-    if [ -e /usr/bin/dnf ]; then
+    distro=$(cat /etc/os-release | grep -w "ID")
+    if [$distro -eq "fedora"]; then
         alias install='sudo dnf install'
         alias remove='sudo dnf remove'
         alias update='sudo dnf update'
         alias upgrade='sudo dnf upgrade'
         alias dist-upgrade='sudo dnf dist-upgrade'
-    elif [ -e /usr/bin/pacman ]; then
+    elif [$distro -eq "garuda"]; then
         alias install='sudo pacman -S'
         alias remove='sudo pacman -R'
         alias update='sudo pacman -Syu'
