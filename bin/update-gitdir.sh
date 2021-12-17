@@ -8,7 +8,19 @@ git_push(){
 
     # Replace colons with spaces to create list.
     for dir in ${dirs//:/ }; do
-        echo "$dir"
+
+        cd $dir
+        echo "Pushing commits from $dir"
+
+        if [[ -n $(git status -s) ]]; then
+            echo "Changes found. Pushing changes..."
+            git add -A && git commit -m 'update' && git push origin main
+        else
+            echo "No changes found. Skip pushing."
+        fi
+
+        echo "Exiting Folder"
+
     done
 
 }
