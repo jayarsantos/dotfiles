@@ -42,7 +42,8 @@ alias update_all_git='update-gitdir.sh pullpush'
 
 # sudo fixes for dnf (check if we have sudo rights and if dnf exists)
 if groups $USER | grep &>/dev/null '\bsudo\b'; then
-    distro='cat /etc/os-release | grep -w "ID"'
+    ID=$(cat /etc/os-release)
+    distro='echo $ID | grep -w "ID"'
     echo "$distro"
     if [$distro -eq "fedora"]; then
         alias install='sudo dnf install'
