@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
-#this is for my Fedora workstation
-if [ -f `which powerline-daemon` ]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  . /usr/share/powerline/bash/powerline.sh || true # continue running this
-  # script if powerline.sh is not found
-# Load starship prompt if starship is installed
-elif  [ -x /usr/bin/starship ]; then
+
+prompt="starship"
+
+if $prompt = "starship"; then
     __main() {
         local major="${BASH_VERSINFO[0]}"
         local minor="${BASH_VERSINFO[1]}"
