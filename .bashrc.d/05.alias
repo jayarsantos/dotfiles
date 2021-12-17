@@ -24,7 +24,7 @@ alias lsd='ls -l | grep "^d"'   #list only directories
 # not needed for Fedora
 # alias vim='vimx'
 # alias vi='vimx'
-alias md='mkdir'
+alias md='mkdir -p'
 alias rd='rm -rf'
 alias ..='cd ..'
 alias ...='cd ../..'
