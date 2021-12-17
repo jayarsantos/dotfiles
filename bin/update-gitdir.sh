@@ -24,6 +24,27 @@ git_push(){
 
 }
 
+git_pull(){
+    dirs=$dir1:$dir2
+
+    # Replace colons with spaces to create list.
+    for dir in ${dirs//:/ }; do
+
+        cd $dir
+
+        if [[ -n $(git status -s) ]]; then
+            echo "Changes found. Pulling remove files to $dir..."
+            git pull
+        else
+            echo "No changes found in $dir. Skip pulling."
+        fi
+
+        echo "Exiting Folder"
+
+    done
+
+}
+
 update_MyConfigs(){
 
 cd ~/MyConfigs
