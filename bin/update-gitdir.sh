@@ -25,22 +25,18 @@ git_push(){
 }
 
 git_pull(){
+
     dirs=$dir1:$dir2
 
     # Replace colons with spaces to create list.
     for dir in ${dirs//:/ }; do
 
         cd $dir
-
-        if [[ -n $(git status -s) ]]; then
-            echo "Changes found. Pulling remove files to $dir..."
-            git pull
+        if git merge-base --is-ancestor origin/master master; then
+            echo Empty
         else
-            echo "No changes found in $dir. Skip pulling."
+            echo "Don't forget to rebase!"
         fi
-
-        echo "Exiting Folder"
-
     done
 
 }
