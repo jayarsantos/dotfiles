@@ -40,26 +40,23 @@ alias update_all_git='update-gitdir.sh pullpush'
 
 # This is a region where non-standard programs are used. We should test before.
 
-echo "I can see you"
-if groups $USER | grep &>/dev/null '\bsudo\b'; then
-    ID=$(cat /etc/os-release)
-    distro=$(echo "$ID" | grep -w "ID")
-    echo "$distro"
-    if [$distro -eq "fedora"]; then
-        alias install='sudo dnf install'
-        alias remove='sudo dnf remove'
-        alias update='sudo dnf update'
-        alias upgrade='sudo dnf upgrade'
-        alias dist-upgrade='sudo dnf dist-upgrade'
-    elif [$distro -eq "garuda"]; then
-        alias search='pacman -Ss'
-        alias cleanup='sudo pacman -Rns `pacman -Qtdq`'
-        alias install='sudo pacman -S'
-        alias remove='sudo pacman -R'
-        alias update='sudo pacman -Syu'
-        alias upgrade='echo "use update instead"'
-        alias dist-upgrade='echo "this is a rolling release"'
-    fi
+ID=$(cat /etc/os-release)
+distro=$(echo "$ID" | grep -w "ID")
+echo "$distro"
+if [$distro -eq "fedora"]; then
+    alias install='sudo dnf install'
+    alias remove='sudo dnf remove'
+    alias update='sudo dnf update'
+    alias upgrade='sudo dnf upgrade'
+    alias dist-upgrade='sudo dnf dist-upgrade'
+elif [$distro -eq "garuda"]; then
+    alias search='pacman -Ss'
+    alias cleanup='sudo pacman -Rns `pacman -Qtdq`'
+    alias install='sudo pacman -S'
+    alias remove='sudo pacman -R'
+    alias update='sudo pacman -Syu'
+    alias upgrade='echo "use update instead"'
+    alias dist-upgrade='echo "this is a rolling release"'
 fi
 
 
