@@ -6,9 +6,11 @@ dir2=$HOME/LoanApp
 git_push(){
 
     echo "$dir1"
+    i=1
 
     for dir in dir1 dir2
     do
+        dir=$dir$i
         if [ -z "$(ls -A $dir$i)" ]; then
             echo "Empty"
         else
