@@ -5,9 +5,8 @@ dir2=$HOME/LoanApp
 
 git_push(){
 
-    i=1
-    echo "$i"
-    
+    echo "you hear?"
+
     for dir in dir1 dir2
     do
         if [ -z "$(ls -A $dir$i)" ]; then
