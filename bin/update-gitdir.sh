@@ -6,6 +6,7 @@ dir2=$HOME/LoanApp
 git_push(){
 
     i=1
+    echo $i
     
     for dir in 1 2
     do
