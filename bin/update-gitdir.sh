@@ -10,7 +10,7 @@ git_push(){
 
     for dir in dir1 dir2
     do
-        if [ -z "$(ls -A $dir$i)" ]; then
+        if [ -z "$(ls -A $dir)" ]; then
             echo "Empty"
         else
             echo "Not Empty"
