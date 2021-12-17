@@ -38,7 +38,7 @@ update_MyConfigs
 update_LoanApp
 ;;
 'all')
-update_LoanApp &
+update_LoanApp &&
 update_MyConfigs
 ;;
 '')
