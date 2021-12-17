@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+dir1=$HOME/MyConfigs
+dir2=$HOME/LoanApp
+
+echo "$dir1 $dir2"
+
+git_push(){
+    dirs=($dir1, $dir2, $dir3)
+
+}
+
 update_MyConfigs(){
 
 cd ~/MyConfigs
