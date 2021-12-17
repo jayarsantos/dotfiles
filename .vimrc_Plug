@@ -256,7 +256,4 @@ if !isdirectory($HOME . "/MyConfigs")
 elseif !isdirectory($HOME . "/bin")
     " create the link if it is not yet created
     !ln ~/MyConfigs/bin ~/bin
-else
-    " finally run the command to update my dotfiles in git on config save
-    autocmd BufWritePost * !update-gitdir.sh DotFiles %:p
 endif
