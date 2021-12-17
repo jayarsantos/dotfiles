@@ -30,7 +30,7 @@ update_MyConfigs
 'LoanApp')
 update_LoanApp
 ;;
-'All')
+'all')
 update_LoanApp
 ;;
 '')
