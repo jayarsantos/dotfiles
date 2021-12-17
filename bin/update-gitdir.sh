@@ -8,7 +8,7 @@ git_push(){
 
     # Replace colons with spaces to create list.
     for dir in ${dirs//:/ }; do
-        echo "$path"
+        echo "$dir"
     done
 
 }
