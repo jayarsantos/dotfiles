@@ -10,13 +10,12 @@ git_push(){
     for dir in ${dirs//:/ }; do
 
         cd $dir
-        echo "Pushing commits from $dir"
 
         if [[ -n $(git status -s) ]]; then
-            echo "Changes found. Pushing changes..."
+            echo "Changes found. Pushing changes in $dir..."
             git add -A && git commit -m 'update' && git push origin main
         else
-            echo "No changes found. Skip pushing."
+            echo "No changes found in $dir. Skip pushing."
         fi
 
         echo "Exiting Folder"
