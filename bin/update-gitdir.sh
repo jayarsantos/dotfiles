@@ -4,10 +4,12 @@ dir1=$HOME/MyConfigs
 dir2=$HOME/LoanApp
 
 git_push(){
+
+    i=1
     
-    for i in 1 2
+    for dir in 1 2
     do
-        if [ -z "$(ls -A $dir)" ]; then
+        if [ -z "$(ls -A $dir$i)" ]; then
             echo "Empty"
         else
             echo "Not Empty"
