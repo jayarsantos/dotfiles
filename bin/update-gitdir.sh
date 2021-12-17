@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 update_MyConfigs(){
+
 cd ~/MyConfigs
-echo "You are in MyConfigs Folder"
+dir = pwd
+echo "You are in $dir"
 
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
@@ -16,8 +18,10 @@ echo "Exiting Folder"
 }
 
 update_LoanApp(){
+
 cd ~/LoanApp
-echo "You are in LoanApp Folder"
+dir = pwd
+echo "You are in $dir"
 
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
