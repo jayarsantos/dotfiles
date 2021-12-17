@@ -2,6 +2,7 @@
 
 update_MyConfigs(){
 cd ~/MyConfigs
+echo "You are in MyConfigs Folder"
 
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
@@ -9,11 +10,14 @@ if [[ -n $(git status -s) ]]; then
 else
     echo "No changes found. Skip pushing."
 fi
+
+echo "Exiting Folder"
 
 }
 
 update_LoanApp(){
 cd ~/LoanApp
+echo "You are in LoanApp Folder"
 
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
@@ -21,6 +25,9 @@ if [[ -n $(git status -s) ]]; then
 else
     echo "No changes found. Skip pushing."
 fi
+
+echo "Exiting Folder"
+
 }
 
 case "$1" in
@@ -31,7 +38,7 @@ update_MyConfigs
 update_LoanApp
 ;;
 'all')
-update_LoanApp
+update_LoanApp &
 update_MyConfigs
 ;;
 '')
