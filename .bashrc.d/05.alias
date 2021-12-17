@@ -52,6 +52,7 @@ if groups $USER | grep &>/dev/null '\bsudo\b'; then
         alias dist-upgrade='sudo dnf dist-upgrade'
     elif [$distro -eq "garuda"]; then
         alias search='pacman -Ss'
+        alias cleanup='sudo pacman -Rns `pacman -Qtdq`'
         alias install='sudo pacman -S'
         alias remove='sudo pacman -R'
         alias update='sudo pacman -Syu'
