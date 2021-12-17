@@ -48,6 +48,12 @@ if groups $USER | grep &>/dev/null '\bsudo\b'; then
         alias update='sudo dnf update'
         alias upgrade='sudo dnf upgrade'
         alias dist-upgrade='sudo dnf dist-upgrade'
+    elif [ -e /usr/bin/pacman ]; then
+        alias install='sudo pacman -S'
+        alias remove='sudo pacman -R'
+        alias update='sudo pacman -Syu'
+        alias upgrade='echo "use update instead"'
+        alias dist-upgrade='echo "this is a rolling release"'
     fi
 fi
 
