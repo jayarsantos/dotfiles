@@ -32,7 +32,7 @@ git_pull(){
     for dir in ${dirs//:/ }; do
 
         cd $dir
-        if git merge-base --is-ancestor origin/master master; then
+        if git merge-base --is-ancestor origin/main main; then
             echo Empty
         else
             echo "Don't forget to rebase!"
