@@ -11,20 +11,6 @@ git_push(){
         echo "$path"
     done
 
-    echo "$dir1"
-    i=1
-
-    for dir in dir1 dir2
-    do
-        dir=$((dir+1))
-        if find $dir -mindepth 1 -maxdepth 1 | read; then
-            echo "Empty"
-        else
-            echo "Not Empty"
-        fi
-    done
-
-
 }
 
 update_MyConfigs(){
