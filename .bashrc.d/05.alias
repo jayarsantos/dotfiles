@@ -41,9 +41,6 @@ alias update_all_git='update-gitdir.sh pullpush'
 # This is a region where non-standard programs are used. We should test before.
 
 #if groups $USER | grep &>/dev/null '\bsudo\b'; then
-    ID=$(cat /etc/os-release)
-    distro=$(echo "$ID" | grep -w "ID")
-    echo "$distro"
     if [$distro -eq "fedora"]; then
         alias install='sudo dnf install'
         alias remove='sudo dnf remove'
