@@ -40,12 +40,11 @@ alias update_all_git='update-gitdir.sh pullpush'
 
 # This is a region where non-standard programs are used. We should test before.
 
-# sudo fixes for dnf (check if we have sudo rights and if dnf exists)
+echo "I can see you"
 if groups $USER | grep &>/dev/null '\bsudo\b'; then
     ID=$(cat /etc/os-release)
     distro=$(echo "$ID" | grep -w "ID")
     echo "$distro"
-    echo "I can see you"
     if [$distro -eq "fedora"]; then
         alias install='sudo dnf install'
         alias remove='sudo dnf remove'
