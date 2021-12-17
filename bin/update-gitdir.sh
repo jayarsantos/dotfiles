@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-git_push(){
-
 dir1=$HOME/MyConfigs
 dir2=$HOME/LoanApp
+
+git_push(){
+
+    echo "$dir1"
 
     for dir in dir1 dir2
     do
