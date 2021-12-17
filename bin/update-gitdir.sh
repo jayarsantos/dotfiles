@@ -33,7 +33,7 @@ git_pull(){
 
         cd $dir
         if git merge-base --is-ancestor origin/main main; then
-            echo "Your git folders are up-to-date"
+            echo "$dir is up-to-date"
         else
             git pull
         fi
