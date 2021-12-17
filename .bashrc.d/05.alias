@@ -35,28 +35,19 @@ alias txz='tar -cJpf'
 alias reload='source ~/.bashrc'
 alias ds1='du -h --max-depth=1 | sort -n -r'
 alias ds0='du -h --max-depth=0 | sort -n -r'
-alias cdS='cd ~/.config/sway/config.d'
-alias cdI='cd ~/.config/i3'
 
 # This is a region where non-standard programs are used. We should test before.
 
-# I am in Fedora right now so can execute below aliases directly
-alias install='sudo dnf install'
-alias remove='sudo dnf remove'
-alias update='sudo dnf update'
-alias upgrade='sudo dnf upgrade'
-alias search='dnf search'
-alias dist-upgrade='sudo dnf dist-upgrade'
 # sudo fixes for dnf (check if we have sudo rights and if dnf exists)
-#if groups $USER | grep &>/dev/null '\bsudo\b'; then
-#    if [ -e /usr/bin/dnf ]; then
-#        alias install='sudo dnf install'
-#        alias remove='sudo dnf remove'
-#        alias update='sudo dnf update'
-#        alias upgrade='sudo dnf upgrade'
-#        alias dist-upgrade='sudo dnf dist-upgrade'
-#    fi
-#fi
+if groups $USER | grep &>/dev/null '\bsudo\b'; then
+    if [ -e /usr/bin/dnf ]; then
+        alias install='sudo dnf install'
+        alias remove='sudo dnf remove'
+        alias update='sudo dnf update'
+        alias upgrade='sudo dnf upgrade'
+        alias dist-upgrade='sudo dnf dist-upgrade'
+    fi
+fi
 
 
 #Jekyll (Ruby gem for static websites; need to figure out a good way to test)
