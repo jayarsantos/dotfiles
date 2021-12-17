@@ -2,8 +2,9 @@
 
 
 # python2 compatibility
-alias python='/usr/bin/python'
-alias python2='/usr/bin/python'
+# not needed in Fedora
+# alias python='/usr/bin/python'
+# alias python2='/usr/bin/python'
 
 # ls aliases
 alias ll="ls -l --group-directories-first"
@@ -20,8 +21,9 @@ alias l='ls -CF'
 alias lsd='ls -l | grep "^d"'   #list only directories
 
 # other commonly used aliases
-alias vim='vimx'
-alias vi='vimx'
+# not needed for Fedora
+# alias vim='vimx'
+# alias vi='vimx'
 alias md='mkdir'
 alias rd='rm -rf'
 alias ..='cd ..'
@@ -34,22 +36,27 @@ alias reload='source ~/.bashrc'
 alias ds1='du -h --max-depth=1 | sort -n -r'
 alias ds0='du -h --max-depth=0 | sort -n -r'
 alias cdS='cd ~/.config/sway/config.d'
-alias cdP='cd ~/MyPython'
-alias cdL='cd ~/MyPython/Development/LoanApp'
 alias cdI='cd ~/.config/i3'
 
 # This is a region where non-standard programs are used. We should test before.
 
+# I am in Fedora right now so can execute below aliases directly
+alias install='sudo dnf install'
+alias remove='sudo dnf remove'
+alias update='sudo dnf update'
+alias upgrade='sudo dnf upgrade'
+alias search='dnf search'
+alias dist-upgrade='sudo dnf dist-upgrade'
 # sudo fixes for dnf (check if we have sudo rights and if dnf exists)
-if groups $USER | grep &>/dev/null '\bsudo\b'; then
-    if [ -e /usr/bin/dnf ]; then
-        alias install='sudo dnf install'
-        alias remove='sudo dnf remove'
-        alias update='sudo dnf update'
-        alias upgrade='sudo dnf upgrade'
-        alias dist-upgrade='sudo dnf dist-upgrade'
-    fi
-fi
+#if groups $USER | grep &>/dev/null '\bsudo\b'; then
+#    if [ -e /usr/bin/dnf ]; then
+#        alias install='sudo dnf install'
+#        alias remove='sudo dnf remove'
+#        alias update='sudo dnf update'
+#        alias upgrade='sudo dnf upgrade'
+#        alias dist-upgrade='sudo dnf dist-upgrade'
+#    fi
+#fi
 
 
 #Jekyll (Ruby gem for static websites; need to figure out a good way to test)

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 # Locale set-up for Australia
-export LC_ALL=en_AU.UTF-8
-export LANGUAGE=en_AU.UTF-8
+# export LC_ALL=en_AU.UTF-8
+# export LANGUAGE=en_AU.UTF-8
 
+# Locale set-up for Philippines
+export LC_ALL=en_PH.UTF-8
+export LANGUAGE=en_PH.UTF-8
