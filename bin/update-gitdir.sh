@@ -32,6 +32,7 @@ update_LoanApp
 ;;
 'all')
 update_LoanApp
+update_MyConfigs
 ;;
 '')
 echo "script preceeding DotFiles, LoanApp, or all"

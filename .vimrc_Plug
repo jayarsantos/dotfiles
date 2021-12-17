@@ -253,9 +253,9 @@ if !isdirectory($HOME . "/MyConfigs")
     call mkdir($HOME . "/MyConfigs", "p", 0700)
     " clone my dotfiles, I use ssh
     !git clone git@github.com:jayarsantos/dotfiles.git $HOME/MyConfigs/
-elseif empty(glob('~/.local/bin/update-gitdir.sh'))
+elseif !isdirectory($HOME . "/bin")
     " create the link if it is not yet created
-    !ln ~/MyConfigs/bin/update-gitdir.sh ~/.local/bin/update-gitdir.sh
+    !ln ~/MyConfigs/bin ~/bin
 else
     " finally run the command to update my dotfiles in git on config save
     autocmd BufWritePost * !update-gitdir.sh DotFiles %:p
