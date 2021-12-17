@@ -90,7 +90,7 @@ case "$1" in
         git_push
         ;;
     'pull')
-        git_push
+        git_pull
         ;;
 '')
 echo "script preceeding DotFiles, LoanApp, or all"
