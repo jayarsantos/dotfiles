@@ -34,6 +34,6 @@ update_LoanApp
 update_LoanApp
 ;;
 '')
-echo "script preceeding DotFiles, LoanApp, or All"
+echo "script preceeding DotFiles, LoanApp, or all"
 ;;
 esac
