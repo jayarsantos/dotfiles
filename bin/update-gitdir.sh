@@ -4,6 +4,12 @@ dir1=$HOME/MyConfigs
 dir2=$HOME/LoanApp
 
 git_push(){
+    dirs=$dir1:$dir2
+
+    # Replace colons with spaces to create list.
+    for dir in ${dirs//:/ }; do
+        echo "$path"
+    done
 
     echo "$dir1"
     i=1
