@@ -3,7 +3,7 @@
 update_MyConfigs(){
 
 cd ~/MyConfigs
-dir = pwd
+dir = $(pwd)
 echo "You are in $dir"
 
 if [[ -n $(git status -s) ]]; then
@@ -20,7 +20,7 @@ echo "Exiting Folder"
 update_LoanApp(){
 
 cd ~/LoanApp
-dir = pwd
+dir = $(pwd)
 echo "You are in $dir"
 
 if [[ -n $(git status -s) ]]; then
