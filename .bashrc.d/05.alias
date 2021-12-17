@@ -45,6 +45,7 @@ if groups $USER | grep &>/dev/null '\bsudo\b'; then
     ID=$(cat /etc/os-release)
     distro=$(echo "$ID" | grep -w "ID")
     echo "$distro"
+    echo "I can see you"
     if [$distro -eq "fedora"]; then
         alias install='sudo dnf install'
         alias remove='sudo dnf remove'
