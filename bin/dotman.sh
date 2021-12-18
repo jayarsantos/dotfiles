@@ -195,6 +195,7 @@ clone_dotrepo (){
 initial_setup() {
 	printf "\n\n%s\n" "First time use 🔥, Set Up ${BOLD}dotman${RESET}"
 	printf "%s\n" "...................................."
+    create_links
 	read -p "➤ Enter dotfiles repository URL : " -r DOT_REPO
 	read -p "➤ Where should I clone ${BOLD}$(basename "${DOT_REPO}")${RESET} (${HOME}/..): " -r DOT_DEST
 	DOT_DEST=${DOT_DEST:-$HOME}
@@ -247,6 +248,27 @@ init_check() {
 		repo_check
 	    manage
 	fi
+}
+
+create_links() {
+
+    # Update my git dotfiles folder automatically
+    if [[ -d $HOME/git ]]; then
+        mkdir -p $HOME/git
+    fi
+    if [[ -d $HOME/git/dotfiles/bin ]]; then
+        !ln -s $HOME/git/dotfiles/bin $HOME/bin
+    fi
+    if [[ -d $HOME/git/dotfiles/.bashrc.d ]]; then
+        !ln -s $HOME/git/dotfiles/.bashrc.d $HOME/.bashrc.d
+    fi
+    if [[ -d $HOME/git/dotfiles/.bashrc ]]; then
+        !ln -s ~/git/dotfiles/.bashrc $HOME/.bashrc
+    fi
+    if [[ -d $HOME/git/dotfiles/vimwiki ]]; then
+        !ln -s $HOME/git/dotfiles/vimwiki $HOME/vimwiki
+    fi
+
 }
 
 

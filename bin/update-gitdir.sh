@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dir1=$HOME/MyConfigs
+dir1=$HOME/git/dotfiles
 dir2=$HOME/LoanApp
 
 git_push(){
@@ -41,11 +41,10 @@ git_pull(){
 
 }
 
-update_MyConfigs(){
+push_MyConfigs(){
 
-cd ~/MyConfigs
-dir=$(pwd)
-echo "You are in $dir"
+cd $dir1
+echo "You are in $dir1"
 
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
@@ -58,11 +57,10 @@ echo "Exiting Folder"
 
 }
 
-update_LoanApp(){
+push_LoanApp(){
 
-cd ~/LoanApp
-dir=$(pwd)
-echo "You are in $dir"
+cd $dir2
+echo "You are in $dir2"
 
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pushing changes..."
@@ -77,14 +75,14 @@ echo "Exiting Folder"
 
 case "$1" in
     'DotFiles')
-        update_MyConfigs
+        push_MyConfigs
         ;;
     'LoanApp')
-        update_LoanApp
+        push_LoanApp
         ;;
     'all')
-        update_LoanApp &&
-        update_MyConfigs
+        push_LoanApp &&
+        push_MyConfigs
         ;;
     'push')
         git_push

@@ -244,16 +244,3 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8', 'python3']
-
-" Update my git dotfiles folder automatically
-if !isdirectory($HOME . "/git")
-    " for sure this directory exists as this config is located inside
-    " this is a joke... heheh or this will be useful if this config is
-    " used independently
-    call mkdir($HOME . "/git", "p", 0700)
-    " clone my dotfiles, I use ssh
-    !git clone git@github.com:jayarsantos/dotfiles.git $HOME/git/dotfiles
-elseif !isdirectory($HOME . "/bin")
-    " create the link if it is not yet created
-    !ln ~/git/dotfiles/bin ~/bin
-endif
