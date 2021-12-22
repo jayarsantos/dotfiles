@@ -200,6 +200,8 @@ initial_setup() {
 	read -p "➤ Where should I clone ${BOLD}$(basename "${DOT_REPO}")${RESET} (${HOME}/..): " -r DOT_DEST
 	DOT_DEST=${DOT_DEST:-$HOME}
 
+    printf "$HOME/$DOT_DEST"
+
 	if [[ -d "$HOME/$DOT_DEST" ]]; then
 		printf "\n%s\r\n" "${BOLD}Calling 📞 Git ... ${RESET}"
 		clone_dotrepo "$DOT_DEST" "$DOT_REPO"
@@ -242,6 +244,9 @@ intro() {
 init_check() {
 	# Check wether its a first time use or not
 	if [[ -z ${DOT_REPO} && -z ${DOT_DEST} ]]; then
+        if [[ -d $HOME/git ]]; then
+            mkdir -p $HOME/git
+        fi
 		initial_setup
 		goodbye
 	else
@@ -253,20 +258,20 @@ init_check() {
 create_links() {
 
     # Update my git dotfiles folder automatically
-    if [[ -d $HOME/git ]]; then
-        mkdir -p $HOME/git
-    fi
-    if [[ -d $HOME/git/dotfiles/bin ]]; then
+    if [[ -d $HOME/bin ]]; then
         !ln -s $HOME/git/dotfiles/bin $HOME/bin
     fi
-    if [[ -d $HOME/git/dotfiles/.bashrc.d ]]; then
+    if [[ -d $HOME/.bashrc.d ]]; then
         !ln -s $HOME/git/dotfiles/.bashrc.d $HOME/.bashrc.d
     fi
-    if [[ -d $HOME/git/dotfiles/.bashrc ]]; then
+    if [[ -f $HOME/.bashrc ]]; then
         !ln -s ~/git/dotfiles/.bashrc $HOME/.bashrc
     fi
-    if [[ -d $HOME/git/dotfiles/vimwiki ]]; then
+    if [[ -d $HOME/vimwiki ]]; then
         !ln -s $HOME/git/dotfiles/vimwiki $HOME/vimwiki
+    fi
+    if [[ -f $HOME/.config/starship.toml ]]; then
+        !cp $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml
     fi
 
 }
