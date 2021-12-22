@@ -74,16 +74,6 @@ echo "Exiting Folder"
 }
 
 case "$1" in
-    'DotFiles')
-        push_MyConfigs
-        ;;
-    'LoanApp')
-        push_LoanApp
-        ;;
-    'all')
-        push_LoanApp &&
-        push_MyConfigs
-        ;;
     'push')
         git_push
         ;;
