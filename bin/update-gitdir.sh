@@ -41,38 +41,6 @@ git_pull(){
 
 }
 
-push_MyConfigs(){
-
-cd $dir1
-echo "You are in $dir1"
-
-if [[ -n $(git status -s) ]]; then
-    echo "Changes found. Pushing changes..."
-    git add -A && git commit -m 'update' && git push origin main
-else
-    echo "No changes found. Skip pushing."
-fi
-
-echo "Exiting Folder"
-
-}
-
-push_LoanApp(){
-
-cd $dir2
-echo "You are in $dir2"
-
-if [[ -n $(git status -s) ]]; then
-    echo "Changes found. Pushing changes..."
-    git add -A && git commit -m 'update' && git push origin main
-else
-    echo "No changes found. Skip pushing."
-fi
-
-echo "Exiting Folder"
-
-}
-
 case "$1" in
     'push')
         git_push
@@ -85,6 +53,6 @@ case "$1" in
         git_push
         ;;
 '')
-echo "script preceeding DotFiles, LoanApp, or all"
+echo "script preceeding pull, push, or pullpush"
 ;;
 esac
