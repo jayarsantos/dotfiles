@@ -11,7 +11,7 @@ git_push(){
 
         cd $dir
 
-        if [[ -n $(git status -s) ]]; then
+        if [[ 'git status --porcelain' ]]; then
             echo "Changes found. Pushing changes in $dir..."
             git add -A && git commit -m 'update' && git push origin main
         else
