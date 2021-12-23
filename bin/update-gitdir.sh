@@ -17,7 +17,7 @@ git_push(){
         CHANGED=$(git diff-index --name-only HEAD --)
         if [ -n "$CHANGED" ]; then
             VN="$VN-mod"
-            echo "$VN"
+            echo "this is VN $VN"
         fi
 
         if [[ 'git status --porcelain' ]]; then
