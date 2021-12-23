@@ -11,15 +11,6 @@ git_push(){
 
         cd $dir
         
-        VN=$(git describe --abbrev=7 HEAD 2>/dev/null)
-
-        git update-index -q --refresh
-        CHANGED=$(git diff-index --name-only HEAD --)
-        if [ -n "$CHANGED" ]; then
-            VN="$VN-mod"
-            echo "this is VN $VN"
-        fi
-
         if [[ 'git status --porcelain' ]]; then
             echo "Changes found. Pushing changes in $dir..."
             git add -A && git commit -m 'update' && git push origin main
