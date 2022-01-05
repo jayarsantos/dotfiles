@@ -1,0 +1,26 @@
+#!/bin/bash
+
+## grep from specific position in this case 16th
+ #grep -Po '(?<=^.{15}) pattern'
+## Monitor configuration
+LVDSResolution=$(xrandr --query | grep 'LVDS-1 connected')
+VGAResolution=$(xrandr --query | grep 'VGA-1 connected primary')
+MainPrimary=$(xrandr --query | grep -Po '(?<=^.{16}) primary')
+VGAPrimary=$(xrandr --query | grep -Po '(?<=^.{15}) primary')
+HDMIPrimary=$(xrandr --query | grep -Po '(?<=^.{16}) primary')
+VGA=$(xrandr --query | grep 'VGA-1')
+HDMI=$(xrandr --query | grep 'HDMI-1')
+
+if [[ $VGAPrimary = *primary* ]] && [[ $LVDS = *1366x768+1600+0* ]]; then
+	bspc monitor VGA-1 -d I II III IV V VI VII
+	bspc monitor LVDS-1 -d VIII IX X
+elif [[ $HDMIPrimary = *primary* ]] && [[ $LVDS = *1366x768+1600+0* ]]; then
+	bspc monitor HDMI-1 -d I II III IV V VI VII
+	bspc monitor LVDS-1 -d VIII IX X
+elif [[ $LVDSResolution = *1366x768+0+0* ]]; then
+	bspc monitor LVDS-1 -d I II III IV V VI VII VIII IX X
+elif [[ $VGAResolution = *1600x900+0+0* ]]; then
+	bspc monitor VGA-1 -d I II III IV V VI VII VIII IX X
+elif [[ $HDMIPrimary = *primary* ]]; then
+	bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
+fi

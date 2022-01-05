@@ -1,0 +1,52 @@
+#!/bin/bash
+#by; Alejandro P. Santos III
+#this script uses pywal
+ROOT="$(readlink -f $(dirname "$0"))"
+WALLDIR="$ROOT/wall"
+COLORDIR="$ROOT/gtk-theme"
+BOLD="\e[1;34m"
+COLORED="\e[1;33m"
+NORMAL="\e[1;0m"
+cd $WALLDIR
+
+print_usage() {
+	printf "${COLORED}------------------------------------------------${NORMAL}\n"
+
+	printf "${BOLD}	Choose a Wallpaper:${NORMAL}\n"
+	echo ""
+	lsix
+#	printf "${BOLD}$(for i in $(ls -F); do echo ${i%%/}; done)${NORMAL}\n"
+	echo ""
+	printf "${COLORED}------------------------------------------------${NORMAL}\n"
+}
+print_error() {
+	echo ""
+	echo "Please be sure to type as it is written in the list"
+	echo "without the filename "e.g. Naruto, Spiderman ... etc""
+	echo "WallpaperChanger is not included in the choices"
+	echo ""
+	exit 1
+}
+
+function set_msg(){
+	printf "${COLORED}------------------------------------------------${NORMAL}\n"
+	printf "${BOLD}	$1${NORMAL}\n"
+	printf "${COLORED}------------------------------------------------${NORMAL}\n"
+}
+
+print_usage
+
+read -p "Wallpaper: " input
+wal -i $WALLDIR/$input.jpg
+
+if [ "$?" = "0" ]; then
+	# recompiles dwm source code
+	cd ~/gitclone/suckless.org/dwm
+	make && echo hajimemasho | sudo -S make clean install && exit
+	set_msg "Wallpaper applied successfully."
+else
+	print_error
+	exit 1
+fi
+
+exit 0

@@ -20,9 +20,6 @@ alias l='ls -CF'
 alias lsd='ls -l | grep "^d"'   #list only directories
 
 # other commonly used aliases
-# not needed for Fedora
-# alias vim='vimx'
-# alias vi='vimx'
 alias md='mkdir -p'
 alias rd='rm -rf'
 alias ..='cd ..'
@@ -36,6 +33,10 @@ alias ds1='du -h --max-depth=1 | sort -n -r'
 alias ds0='du -h --max-depth=0 | sort -n -r'
 alias cdL='cd $HOME/LoanApp; update-gitdir.sh pull'
 alias update_all_git='update-gitdir.sh pullpush'
+alias cdL='cd $HOME/git/LoanApplication'
+# configuration aliases
+alias plymouth_list_theme='sudo plymouth-set-default-theme -l'
+alias plymouth_change_theme='sudo plymouth-set-default-theme -R'
 
 # This is a region where non-standard programs are used. We should test before.
 if [ -e /usr/bin/dnf ]; then

@@ -1,0 +1,11 @@
+--2020-01-06 05:12:10--  http://wttr.in/algiers_0tqp_lang=fr.png
+Resolving wttr.in (wttr.in)... 5.9.243.187
+Connecting to wttr.in (wttr.in)|5.9.243.187|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4226 (4.1K) [image/png]
+Saving to: ‘/home/jayar/.cache/wttr.png’
+
+/home/jayar/.cache/wttr.png   0%[                                           ]       0  --.-KB/s               /home/jayar/.cache/wttr.png 100%[==========================================>]   4.13K  --.-KB/s    in 0.01s   
+
+2020-01-06 05:12:12 (372 KB/s) - ‘/home/jayar/.cache/wttr.png’ saved [4226/4226]
+
