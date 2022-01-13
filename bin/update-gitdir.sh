@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 dir1=$HOME/git/dotfiles
-dir2=$HOME/LoanApp
+dir2=$HOME/git/LoanApplication
 
 git_push(){
     dirs=$dir1:$dir2
