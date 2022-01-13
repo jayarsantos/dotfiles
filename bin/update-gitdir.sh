@@ -53,6 +53,7 @@ case "$1" in
         git_push
         ;;
 '')
-echo "script preceeding pull, push, or pullpush"
+    git_pull &&
+    git_push
 ;;
 esac

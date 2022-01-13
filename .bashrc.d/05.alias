@@ -37,6 +37,8 @@ alias cdL='cd $HOME/git/LoanApplication'
 # configuration aliases
 alias plymouth_list_theme='sudo plymouth-set-default-theme -l'
 alias plymouth_change_theme='sudo plymouth-set-default-theme -R'
+# fedora's vimx (vim-X11)
+alias vim='vimx'
 
 # This is a region where non-standard programs are used. We should test before.
 if [ -e /usr/bin/dnf ]; then
