@@ -1,4 +1,5 @@
 * [Home](Home.md)
+* [Work](Work.md)
 * [JobHunt](JobHunt.md)
 * [Jairel](JairelTasks.md)
 
@@ -16,6 +17,9 @@
 ###Linux
 1. [Samba](Samba.md)
 2. [Bluetooth](Bluetooth.md)
+
+Fedora
+1. [AfterInstall](AfterInstall.md)
 
 Gnome
 * [CustomKeybindings](CustomKeybindings.md)
