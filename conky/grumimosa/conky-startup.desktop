@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/jayarsantos/.config/conky/grumimosa/start.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=conky-startup
+Comment[en_US]=conky-startup
+X-GNOME-Autostart-Delay=3

@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# python2 compatibility
-# not needed in Fedora
-# alias python='/usr/bin/python'
-# alias python2='/usr/bin/python'
-
 # ls aliases
 alias ll="ls -l --group-directories-first"
 alias ls='ls -hF --color'  # add colors for filetype recognition
@@ -34,11 +29,16 @@ alias ds0='du -h --max-depth=0 | sort -n -r'
 alias cdL='cd $HOME/LoanApp; update-gitdir.sh pull'
 alias update_all_git='update-gitdir.sh pullpush'
 alias cdL='cd $HOME/git/LoanApplication'
+
 # configuration aliases
 alias plymouth_list_theme='sudo plymouth-set-default-theme -l'
 alias plymouth_change_theme='sudo plymouth-set-default-theme -R'
 # fedora's vimx (vim-X11)
-alias vim='vimx'
+#alias vim='vimx'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # This is a region where non-standard programs are used. We should test before.
 if [ -e /usr/bin/dnf ]; then
@@ -55,4 +55,6 @@ elif [ -e /usr/bin/pacman ]; then
     alias update='sudo pacman -Syu'
     alias upgrade='echo "use update instead"'
     alias dist-upgrade='echo "this is a rolling release"'
+elif [ -e /usr/bin/apt ]; then
+    alias update='sudo apt update && sudo apt upgrade -y'
 fi
