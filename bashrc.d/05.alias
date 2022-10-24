@@ -28,7 +28,8 @@ alias ds1='du -h --max-depth=1 | sort -n -r'
 alias ds0='du -h --max-depth=0 | sort -n -r'
 alias cdL='cd $HOME/LoanApp; update-gitdir.sh pull'
 alias update_all_git='update-gitdir.sh pullpush'
-alias cdL='cd $HOME/git/LoanApplication'
+alias cLoan='cd $HOME/git/LoanApplication'
+alias cdot='cd $HOME/git/dotfiles'
 
 # configuration aliases
 alias plymouth_list_theme='sudo plymouth-set-default-theme -l'
