@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Locale set-up for Philippinew
-export LC_ALL=en_PH.UTF-8
-export LANGUAGE=en_PH.UTF-8
